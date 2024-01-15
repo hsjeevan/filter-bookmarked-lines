@@ -11,18 +11,18 @@
   ],
   "activationEvents": [
     "onCommand:extension.filter-bookmarked-lines",
-    "onCommand:extension.filter-non_bookmarked-lines"
+    "onCommand:extension.filter-non-bookmarked-lines"
   ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
         "command": "extension.filter-bookmarked-lines",
-        "title": "Filter Non-Bookmarked"
+        "title": "Remove Bookmarked"
       },
       {
-        "command": "extension.filter-non_bookmarked-lines",
-        "title": "Filter Bookmarked"
+        "command": "extension.filter-non-bookmarked-lines",
+        "title": "Remove Non-Bookmarked"
       }
     ],
     "keybindings": [
@@ -32,9 +32,9 @@
           "mac": "ctrl+cmd+1"
       },
       {
-          "command": "extension.filter-non_bookmarked-lines",
+          "command": "extension.filter-non-bookmarked-lines",
           "key": "ctrl+alt+2",
-          "mac": "ctrl+cmd+f2"
+          "mac": "ctrl+cmd+2"
       }
     ]
   },

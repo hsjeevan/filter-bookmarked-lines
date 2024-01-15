@@ -1,61 +1,66 @@
 import * as vscode from 'vscode';
 
-export function activate(context: vscode.ExtensionContext) {
-  let filtered = vscode.commands.registerCommand('extension.filter-bookmarked-lines', () => {
-    let requestStatus = 1;
-    commonCode(requestStatus);
-  });
-
-  
-
-  context.subscriptions.push(filtered);
-  let unfiltered = vscode.commands.registerCommand('extension.filter-unbookmarked-lines', () => {
-    let requestStatus = 0;
-    commonCode(requestStatus);
-  });
-  context.subscriptions.push(unfiltered);
+enum RequestStatus {
+  Bookmarked = 1,
+  NonBookmarked = 0,
 }
-function commonCode(requestStatus:Number){
+
+export function activate(context: vscode.ExtensionContext) {
+  context.subscriptions.push(vscode.commands.registerCommand('extension.filter-bookmarked-lines', () => {
+    handleFilterCommand(RequestStatus.Bookmarked);
+  }));
+
+  context.subscriptions.push(vscode.commands.registerCommand('extension.filter-non-bookmarked-lines', () => {
+    handleFilterCommand(RequestStatus.NonBookmarked);
+  }));
+}
+
+function handleFilterCommand(requestStatus: RequestStatus) {
   const editor = vscode.window.activeTextEditor;
 
   if (editor) {
-    // Get the document and its content
     const document = editor.document;
     const text = document.getText();
+    const breakpointsArr: any = vscode.debug.breakpoints;
 
-    // Get the bookmarked lines
-    const bookmarkedLines = getBookmarkedLines(text, requestStatus);
-
-    // Filter out the bookmarked lines
-    const linesToKeep = text
-      .split('\n')
-      .filter((_, index) => !bookmarkedLines.includes(index + 1));
-
-    // Join the remaining lines
+    const bookmarkedLines = getBookmarkedLines(breakpointsArr);
+    const linesToKeep = filterLines(text, bookmarkedLines, requestStatus);
     const updatedText = linesToKeep.join('\n');
 
-    // Replace the document content with the updated text
-    editor.edit((editBuilder) => {
-      const start = new vscode.Position(0, 0);
-      const end = new vscode.Position(document.lineCount, 0);
-      const range = new vscode.Range(start, end);
-      editBuilder.replace(range, updatedText);
-    });
+    replaceDocumentContent(editor, updatedText);
 
-    vscode.window.showInformationMessage(requestStatus? 'Bookmarked lines removed successfully.': 'Bookmarked lines removed successfully.');
+    removeBreakpoints(breakpointsArr);
+
+    const successMessage = requestStatus === RequestStatus.Bookmarked ?
+      'Bookmarked lines removed successfully.' : 'Non-bookmarked lines removed successfully.';
+
+    vscode.window.showInformationMessage(successMessage);
   }
 }
-function getBookmarkedLines(text: string, status: Number): number[] {
-  // Extract line numbers with bookmarks from the text
-  const bookmarkedLines: number[] = [];
-  const lines = text.split('\n');
 
-  lines.forEach((line, index) => {
-    if (status? line.includes('!@'): !line.includes('!@')) {
-      bookmarkedLines.push(index + 1);
-    }
-  });
-
-  return bookmarkedLines;
+function filterLines(text: string, bookmarkedLines: number[], requestStatus: RequestStatus): string[] {
+  return text.split('\n')
+    .filter((_, index) => requestStatus === RequestStatus.Bookmarked ? !bookmarkedLines.includes(index + 1) : bookmarkedLines.includes(index + 1));
 }
 
+function getBookmarkedLines(breakpoints: vscode.Breakpoint[]): number[] {
+  return breakpoints.map((breakpoint: any) => {
+    const start = breakpoint.location?.range?.start;
+    return start ? start.line + 1 : -1;
+  }).filter(lineNumber => lineNumber !== -1);
+}
+
+function replaceDocumentContent(editor: vscode.TextEditor, updatedText: string) {
+  editor.edit((editBuilder) => {
+    const start = new vscode.Position(0, 0);
+    const end = new vscode.Position(editor.document.lineCount, 0);
+    const range = new vscode.Range(start, end);
+    editBuilder.replace(range, updatedText);
+  });
+}
+
+function removeBreakpoints(breakpoints: vscode.Breakpoint[]) {
+  for (const breakpoint of breakpoints) {
+    vscode.debug.removeBreakpoints([breakpoint]);
+  }
+}

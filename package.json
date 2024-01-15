@@ -1,40 +1,42 @@
 {
   "name": "filter-bookmarked-lines",
+  "publisher": "hsjeevan",
   "displayName": "Filter Bookmarked lines",
-  "description": "",
-  "version": "0.0.1",
+  "description": "Extension to filter out lines in the text editor using the debugger.",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.85.0"
   },
+  "icon":  "icon/fbl.jpeg",
   "categories": [
     "Other"
   ],
   "activationEvents": [
-    "onCommand:extension.filter-bookmarked-lines",
-    "onCommand:extension.filter-non-bookmarked-lines"
+    "onLanguage:plaintext",
+    "onLanguage:markdown"
   ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
         "command": "extension.filter-bookmarked-lines",
-        "title": "Remove Bookmarked"
+        "title": "Remove Bookmarked Lines"
       },
       {
         "command": "extension.filter-non-bookmarked-lines",
-        "title": "Remove Non-Bookmarked"
+        "title": "Remove Non-Bookmarked Lines"
       }
     ],
     "keybindings": [
       {
-          "command": "extension.filter-bookmarked-lines",
-          "key": "ctrl+alt+1",
-          "mac": "ctrl+cmd+1"
+        "command": "extension.filter-bookmarked-lines",
+        "key": "ctrl+alt+1",
+        "mac": "ctrl+cmd+1"
       },
       {
-          "command": "extension.filter-non-bookmarked-lines",
-          "key": "ctrl+alt+2",
-          "mac": "ctrl+cmd+2"
+        "command": "extension.filter-non-bookmarked-lines",
+        "key": "ctrl+alt+2",
+        "mac": "ctrl+cmd+2"
       }
     ]
   },
@@ -50,17 +52,21 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.85.0",
     "@types/mocha": "^10.0.6",
     "@types/node": "18.x",
+    "@types/vscode": "^1.85.0",
     "@typescript-eslint/eslint-plugin": "^6.15.0",
     "@typescript-eslint/parser": "^6.15.0",
-    "eslint": "^8.56.0",
-    "typescript": "^5.3.3",
-    "ts-loader": "^9.5.1",
-    "webpack": "^5.89.0",
-    "webpack-cli": "^5.1.4",
     "@vscode/test-cli": "^0.0.4",
-    "@vscode/test-electron": "^2.3.8"
+    "@vscode/test-electron": "^2.3.8",
+    "eslint": "^8.56.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.3.3",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hsjeevan/filter-bookmarked-lines"
   }
 }

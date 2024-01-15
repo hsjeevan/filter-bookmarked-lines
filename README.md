@@ -1,71 +1,38 @@
-# filter-bookmarked-lines README
+# VS Code Filter Bookmarked Lines
 
-This is the README for your extension "filter-bookmarked-lines". After writing up a brief description, we recommend including the following sections.
+This Visual Studio Code extension provides functionality to filter lines in the active editor based on bookmarked lines. It allows you to either keep only the bookmarked lines or remove them from the document.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- **Remove Bookmarked Lines**: Removes lines that are bookmarked in the active editor.
+- **Remove Non-Bookmarked Lines**: Removes lines that are not bookmarked in the active editor.
 
-For example if there is an image subfolder under your extension project workspace:
+## How to Use
 
-\!\[feature X\]\(images/feature-x.png\)
+1. Open a file in Visual Studio Code.
+2. Set bookmarks in the file using breakpoints (red dots in the margin).
+3. Use the provided commands to filter lines:
+   - **Remove Bookmarked Lines**: `Ctrl+Alt+1` (Windows/Linux), `Cmd+Ctrl+1` (Mac)
+   - **Remove Non-Bookmarked Lines**: `Ctrl+Alt+2` (Windows/Linux), `Cmd+Ctrl+2` (Mac)
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+## Similarity to Notepad++'s Filter Bookmarked Lines
 
-## Requirements
+This extension is inspired by the functionality in Notepad++ that allows you to filter and keep/remove bookmarked lines. It provides a quick and convenient way to work with bookmarked lines in your code.
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+## Installation
 
-## Extension Settings
+1. Open Visual Studio Code.
+2. Go to the Extensions view (`Ctrl+Shift+X`).
+3. Search for "Filter Bookmarked Lines" and install it.
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+## Credits
 
-For example:
+This extension is developed by [Your Name] and is open-source. Contributions are welcome. Feel free to report issues or contribute to the [GitHub repository](https://github.com/hsjeevan/filter-bookmarked-lines).
 
-This extension contributes the following settings:
+## License
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+This extension is licensed under the [MIT License](LICENSE.md).
 
 ---
 
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+**Enjoy filtering your bookmarked lines with ease!**

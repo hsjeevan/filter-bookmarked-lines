@@ -9,13 +9,32 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onCommand:extension.filter-bookmarked-lines",
+    "onCommand:extension.filter-non_bookmarked-lines"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "filter-bookmarked-lines",
+        "command": "extension.filter-bookmarked-lines",
+        "title": "Filter Non-Bookmarked"
+      },
+      {
+        "command": "extension.filter-non_bookmarked-lines",
         "title": "Filter Bookmarked"
+      }
+    ],
+    "keybindings": [
+      {
+          "command": "extension.filter-bookmarked-lines",
+          "key": "ctrl+alt+1",
+          "mac": "ctrl+cmd+1"
+      },
+      {
+          "command": "extension.filter-non_bookmarked-lines",
+          "key": "ctrl+alt+2",
+          "mac": "ctrl+cmd+f2"
       }
     ]
   },

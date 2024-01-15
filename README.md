@@ -29,10 +29,6 @@ This extension is inspired by the functionality in Notepad++ that allows you to 
 
 This extension is developed by [Your Name] and is open-source. Contributions are welcome. Feel free to report issues or contribute to the [GitHub repository](https://github.com/hsjeevan/filter-bookmarked-lines).
 
-## License
-
-This extension is licensed under the [MIT License](LICENSE.md).
-
 ---
 
 **Enjoy filtering your bookmarked lines with ease!**

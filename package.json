@@ -5,7 +5,7 @@
   "description": "Extension to filter out lines in the text editor using the debugger breakpoints.",
   "version": "0.0.3",
   "engines": {
-    "vscode": "^0.10.5"
+    "vscode": "^1.75.0"
   },
   "icon":  "icon/fbl.jpeg",
   "categories": [
@@ -62,7 +62,7 @@
   "devDependencies": {
     "@types/mocha": "^10.0.6",
     "@types/node": "18.x",
-    "@types/vscode": "^1.85.0",
+    "@types/vscode": "^1.75.0",
     "@typescript-eslint/eslint-plugin": "^6.15.0",
     "@typescript-eslint/parser": "^6.15.0",
     "@vscode/test-cli": "^0.0.4",

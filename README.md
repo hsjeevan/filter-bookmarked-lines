@@ -27,7 +27,7 @@ This extension is inspired by the functionality in Notepad++ that allows you to 
 
 ## Credits
 
-This extension is developed by [Your Name] and is open-source. Contributions are welcome. Feel free to report issues or contribute to the [GitHub repository](https://github.com/hsjeevan/filter-bookmarked-lines).
+This extension is developed by Jeevan Sreenivasaiah and is open-source. Contributions are welcome. Feel free to report issues or contribute to the [GitHub repository](https://github.com/hsjeevan/filter-bookmarked-lines).
 
 ---
 

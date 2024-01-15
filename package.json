@@ -2,10 +2,10 @@
   "name": "filter-bookmarked-lines",
   "publisher": "hsjeevan",
   "displayName": "Filter Bookmarked lines",
-  "description": "Extension to filter out lines in the text editor using the debugger.",
-  "version": "0.0.2",
+  "description": "Extension to filter out lines in the text editor using the debugger breakpoints.",
+  "version": "0.0.3",
   "engines": {
-    "vscode": "^1.85.0"
+    "vscode": "^0.10.5"
   },
   "icon":  "icon/fbl.jpeg",
   "categories": [
@@ -20,11 +20,19 @@
     "commands": [
       {
         "command": "extension.filter-bookmarked-lines",
-        "title": "Remove Bookmarked Lines"
+        "title": "FBL: Remove Bookmarked Lines"
       },
       {
         "command": "extension.filter-non-bookmarked-lines",
-        "title": "Remove Non-Bookmarked Lines"
+        "title": "FBL: Remove Non-Bookmarked Lines"
+      },
+      {
+        "command": "extension.enable-breakpoints-everywhere",
+        "title": "FBL: Enable Breakpoints Everywhere"
+      },
+      {
+        "command": "extension.disable-breakpoints-everywhere",
+        "title": "FBL: Disable Breakpoints Everywhere"
       }
     ],
     "keybindings": [

@@ -6,12 +6,24 @@ enum RequestStatus {
 }
 
 export function activate(context: vscode.ExtensionContext) {
+  const config = vscode.workspace.getConfiguration();
+
   context.subscriptions.push(vscode.commands.registerCommand('extension.filter-bookmarked-lines', () => {
     handleFilterCommand(RequestStatus.Bookmarked);
   }));
 
   context.subscriptions.push(vscode.commands.registerCommand('extension.filter-non-bookmarked-lines', () => {
     handleFilterCommand(RequestStatus.NonBookmarked);
+  }));
+
+  context.subscriptions.push(vscode.commands.registerCommand('extension.enable-breakpoints-everywhere', () => {
+     config.update('debug.allowBreakpointsEverywhere', true, 1);
+     vscode.window.showInformationMessage('Breakpoints Enabled Everywhere');
+
+  }));
+  context.subscriptions.push(vscode.commands.registerCommand('extension.disable-breakpoints-everywhere', () => {
+     config.update('debug.allowBreakpointsEverywhere', false, 1);
+     vscode.window.showInformationMessage('Breakpoints Disabled Everywhere');
   }));
 }
 
@@ -63,4 +75,8 @@ function removeBreakpoints(breakpoints: vscode.Breakpoint[]) {
   for (const breakpoint of breakpoints) {
     vscode.debug.removeBreakpoints([breakpoint]);
   }
+}
+function enable(){
+// Change the setting
+
 }

@@ -3,7 +3,7 @@
   "publisher": "hsjeevan",
   "displayName": "Filter Bookmarked lines",
   "description": "Extension to filter out lines in the text editor using the debugger breakpoints.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "engines": {
     "vscode": "^1.75.0"
   },
